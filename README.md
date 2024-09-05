@@ -10,7 +10,7 @@ Monitoring and enumerating Slack for exposed secrets
 ## About Slack Watchman
 Slack Watchman is an application that uses the Slack API to find potentially sensitive data exposed in a Slack workspace, and to enumerate other useful information for red, blue and purple teams.
 
-More information about Slack Watchman can be found [on my blog](https://papermtn.co.uk/slack-watchman-monitoring-slack-workspaces-for-sensitive-information/).
+
 
 ### Features
 Slack Watchman looks for:
@@ -47,7 +47,7 @@ You can run Slack Watchman to look for results going back as far as:
 This means after one deep scan, you can schedule Slack Watchman to run regularly and only return results from your chosen timeframe.
 
 ### Signatures
-Slack Watchman uses custom YAML signatures to detect matches in Slack. These signatures are pulled from the central [Watchman Signatures repository](https://github.com/PaperMtn/watchman-signatures). Slack Watchman automatically updates its signature base at runtime to ensure its using the latest signatures to detect secrets.
+Slack Watchman uses custom YAML signatures to detect matches in Slack. These signatures are pulled from the central [Watchman Signatures repository](https://github.com/SvavaCapital/watchman-signatures). Slack Watchman automatically updates its signature base at runtime to ensure its using the latest signatures to detect secrets.
 
 ### Logging
 
@@ -89,7 +89,6 @@ Alternatively, Slack Watchman can also authenticate to Slack using a user `d` co
 
 To use cookie authentication, you will need to provide the `d` cookie, and the URL of the target workspace. Then you will need to use the `--cookie` flag when running Slack Watchman
 
-More information on cookie authentication can be found [on my blog](https://papermtn.co.uk/category/tools/slack-watchman/)
 #### Providing tokens
 Slack Watchman will first try to get the Slack token (plus the cookie token and URL if selected) from the environment variables 
 - `SLACK_WATCHMAN_TOKEN`
@@ -139,11 +138,11 @@ You can then run Slack Watchman in a container, making sure you pass the require
 
 ```commandline
 // help
-docker run --rm papermountain/slack-watchman -h
+docker run --rm 239700674053.dkr.ecr.ap-south-1.amazonaws.com/stable-saas-v1-common:slack-watchman-latest -h
 
 // scan all
-docker run --rm -e SLACK_WATCHMAN_TOKEN=xoxp... papermountain/slack-watchman --timeframe a --all --output json
-docker run --rm --env-file .env papermountain/slack-watchman --timeframe a --all --output stdout
+docker run --rm -e SLACK_WATCHMAN_TOKEN=xoxp... 239700674053.dkr.ecr.ap-south-1.amazonaws.com/stable-saas-v1-common:slack-watchman-latest --timeframe a --all --output json
+docker run --rm --env-file .env 239700674053.dkr.ecr.ap-south-1.amazonaws.com/stable-saas-v1-common:slack-watchman-latest --timeframe a --all --output stdout
 ```
 
 ## Usage
@@ -180,11 +179,7 @@ You can run Slack Watchman to look for everything, and output to default stdout:
 slack-watchman --timeframe a --all
 ```
 
-## Other Watchman apps
-You may be interested in the other apps in the Watchman family:
-- [Slack Watchman for Enterprise Grid](https://github.com/PaperMtn/slack-watchman-enterprise-grid)
-- [GitLab Watchman](https://github.com/PaperMtn/gitlab-watchman)
-- [GitHub Watchman](https://github.com/PaperMtn/github-watchman)
+
 
 ## License
 The source code for this project is released under the [GNU General Public Licence](https://www.gnu.org/licenses/licenses.html#GPL). This project is not associated with Slack Technologies or Salesforce.
